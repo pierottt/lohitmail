@@ -1,4 +1,4 @@
-from pass_interview import main
+from interview.fail_interview import main
 
 
 if __name__ == "__main__":

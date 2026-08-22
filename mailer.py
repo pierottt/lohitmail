@@ -3,63 +3,11 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from os import getenv
 
 import gspread
-from dotenv import load_dotenv
 from google.oauth2.service_account import Credentials
 
-
-load_dotenv()
-
-
-def get_required_env(name):
-    value = getenv(name)
-
-    if value is None or value.strip() == "":
-        raise RuntimeError(f"Missing required environment variable: {name}")
-
-    return value
-
-
-def get_bool_env(name, default):
-    value = getenv(name)
-
-    if value is None or value.strip() == "":
-        return default
-
-    normalized_value = value.strip().lower()
-
-    if normalized_value in {"1", "true", "yes", "y", "on"}:
-        return True
-
-    if normalized_value in {"0", "false", "no", "n", "off"}:
-        return False
-
-    raise RuntimeError(f"{name} must be true or false")
-
-
-SPREADSHEET_URL = get_required_env("SPREADSHEET_URL")
-GOOGLE_CREDENTIALS_FILE = getenv("GOOGLE_CREDENTIALS_FILE", "credentials.json")
-
-SENDER_EMAIL = get_required_env("SENDER_EMAIL")
-GMAIL_APP_PASSWORD = getenv("GMAIL_APP_PASSWORD", "")
-DRY_RUN = get_bool_env("DRY_RUN", True)
-
-CAMP_NAME = "ค่ายไม่ว่าปางนี้หรือปางไหน อยากให้เธอมาพักใจที่ปางหลวง"
-CAMP_NAME_DISPLAY = f"{CAMP_NAME}🌦️"
-CAMP_DATES = "16-27 ธันวาคม 2568"
-CAMP_LOCATION = "โรงเรียนบ้านปางหลวง ต.ท่าก๊อ อ.แม่สรวย จ.เชียงราย"
-
-FIRST_MEET_DATE = "วันศุกร์ที่ 7 พฤศจิกายน 2568"
-FIRST_MEET_TIME = "16.50-19.30 น."
-FIRST_MEET_LOCATION = "ห้อง 406 อาคารจามจุรี 9"
-FIRST_MEET_MAP_URL = "https://maps.app.goo.gl/e5Eji81xqeLEkYUCA?g_st=ipc"
-
-CAMP_LINE_GROUP_URL = "https://line.me/ti/g/QneAzQsYRB"
-
-INTERVIEW_RESULT_SUBJECT = f"ประกาศผลการคัดเลือกรอบสัมภาษณ์ {CAMP_NAME_DISPLAY}"
-FORM_RESULT_SUBJECT = f"ประกาศผลการคัดเลือกรอบกรอกใบสมัคร {CAMP_NAME_DISPLAY}"
+from config import APP
 
 
 @dataclass(frozen=True)
@@ -81,12 +29,12 @@ def get_sheet_data(job):
     ]
 
     creds = Credentials.from_service_account_file(
-        GOOGLE_CREDENTIALS_FILE,
+        APP.google_credentials_file,
         scopes=scopes,
     )
 
     client = gspread.authorize(creds)
-    spreadsheet = client.open_by_url(SPREADSHEET_URL)
+    spreadsheet = client.open_by_url(APP.spreadsheet_url)
     sheet = spreadsheet.worksheet(job.sheet_name)
 
     end_row = job.start_row + job.num_rows - 1
@@ -110,28 +58,28 @@ def row_col_to_a1(row, col):
 
 def send_email(recipient_email, subject, html_message):
     msg = MIMEMultipart("alternative")
-    msg["From"] = SENDER_EMAIL
+    msg["From"] = APP.sender_email
     msg["To"] = recipient_email
     msg["Subject"] = subject
 
     html_part = MIMEText(html_message, "html", "utf-8")
     msg.attach(html_part)
 
-    if DRY_RUN:
+    if APP.dry_run:
         print("DRY RUN - email not sent")
         print(f"To: {recipient_email}")
         print(f"Subject: {subject}")
         print("-" * 50)
         return
 
-    if SENDER_EMAIL == "your_email@gmail.com":
+    if APP.sender_email == "your_email@gmail.com":
         raise RuntimeError("Set SENDER_EMAIL in .env before sending")
 
-    if not GMAIL_APP_PASSWORD or GMAIL_APP_PASSWORD == "your_app_password":
+    if not APP.gmail_app_password or APP.gmail_app_password == "your_app_password":
         raise RuntimeError("Set GMAIL_APP_PASSWORD in .env before sending")
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-        server.login(SENDER_EMAIL, GMAIL_APP_PASSWORD)
+        server.login(APP.sender_email, APP.gmail_app_password)
         server.send_message(msg)
 
     print(f"Email sent to: {recipient_email}")
