@@ -5,8 +5,6 @@ from config import (
     CONFIRMATION_DEADLINE,
     CONFIRMATION_FORM_URL,
     FIRST_MEET_DATE,
-    FIRST_MEET_LOCATION,
-    FIRST_MEET_MAP_URL,
     FIRST_MEET_TIME,
     INTERVIEW_PASS_SHEET,
     INTERVIEW_RESULT_SUBJECT,
@@ -21,15 +19,15 @@ def get_message(name, _row):
         "<br><br>ทางชมรมโลหิตมีความยินดีที่จะแจ้งว่า 🎉 "
         "<b><span style='color:#5865F2;'>คุณเป็นผู้ผ่านการคัดเลือกรอบสัมภาษณ์</span></b> "
         f"{CAMP_NAME_DISPLAY} ซึ่งจัดระหว่าง วันที่ {CAMP_DATES} ณ 📍{CAMP_LOCATION}"
-        "<br><br>เดี๋ยวมาแก้แม่ ขอให้ผู้ผ่านการคัดเลือกกดยืนยันสิทธิผ่านทางการกรอกฟอร์มอีกครั้ง"
-        f"พร้อมชำระค่ามัดจำภายในวันที่ {CONFIRMATION_DEADLINE} 📌 📌 📌 "
-        f"{CONFIRMATION_FORM_URL} 📌 📌 📌 📌"
+        "<br><br>ขอให้ผู้ผ่านการคัดเลือกกดยืนยันสิทธิผ่านทางการกรอกฟอร์มอีกครั้ง"
+        f"พร้อมชำระค่ามัดจำภายในวันที่ {CONFIRMATION_DEADLINE}"
+        f"<br>📌 {CONFIRMATION_FORM_URL} 📌"
         "<br><br>📢 โดยขอให้ผู้ผ่านการคัดเลือกทุกท่านเข้าร่วม "
         "<b><span style='color:#810541;'>First Meet ชาวค่าย</span></b> "
         "ที่จัดขึ้นเพื่อชี้แจงรายละเอียดค่ายและโครงให้กับผู้เข้าร่วมค่ายทุกท่าน"
         f"<br><br>🗓️วันที่: {FIRST_MEET_DATE}"
         f"<br>⏰เวลา: {FIRST_MEET_TIME}"
-        f"<br>📍สถานที่: {FIRST_MEET_LOCATION} ({FIRST_MEET_MAP_URL})"
+        "<br>โดยสถานที่จะแจ้งให้ทราบอีกครั้งในกลุ่มไลน์"
         "<br><br>💌อย่าลืมเข้ากลุ่มไลน์ชาวค่ายนี้ด้วยนะ ! "
         "🩷(ลิงก์เข้าไลน์กดทางฟอร์มได้เลยค่า)"
         "<br><br>ไว้เจอกันนะ! ✨"

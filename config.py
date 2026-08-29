@@ -70,8 +70,8 @@ CAMP_NAME_DISPLAY = f"⛰️{CAMP_NAME}⛅️"
 CAMP_DATES = "23-25 ตุลาคม 2569"
 CAMP_LOCATION = "โรงเรียน โรงเรียนบ้านดง หมู่ 3 ต.คอกควาย อ.บ้านไร่ จ.อุทัยธานี 61140"
 
-CONFIRMATION_DEADLINE = "20 มีนาคม"
-CONFIRMATION_FORM_URL = "https://forms.gle/H1wFjYQUaKwf2ZEPA"
+CONFIRMATION_DEADLINE = "2 กันยายน เวลา 23.59 น."
+CONFIRMATION_FORM_URL = "https://forms.gle/ZDtmdwPKyqQgb3Tm8"
 
 FIRST_MEET_DATE = "วันศุกร์ที่ 4 กันยายน 2569"
 FIRST_MEET_TIME = "เริ่มลงทะเบียน 16.45 กิจกรรม 17.00-19.30 น."
