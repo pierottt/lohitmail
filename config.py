@@ -10,7 +10,7 @@ from os import getenv
 from dotenv import load_dotenv
 
 
-load_dotenv()
+load_dotenv(override=True)
 
 
 def _required_env(name: str) -> str:
@@ -65,10 +65,10 @@ APP = AppConfig(
     dry_run=_bool_env("DRY_RUN", True),
 )
 
-CAMP_NAME = "ค่ายลัดป่าฝ่าดงพงไพรพงพี มาพบคนดีกันที่บ้านดง"
+CAMP_NAME = "พริกป่น พริกไทย พลิกไป พลิกมา ลมหนาวนำพา ปิ๊กมาแม่พริก"
 CAMP_NAME_DISPLAY = f"⛰️{CAMP_NAME}⛅️"
-CAMP_DATES = "23-25 ตุลาคม 2569"
-CAMP_LOCATION = "โรงเรียน โรงเรียนบ้านดง หมู่ 3 ต.คอกควาย อ.บ้านไร่ จ.อุทัยธานี 61140"
+CAMP_DATES = "17-27 ธันวาคม 2569"
+CAMP_LOCATION = "โรงเรียน โรงเรียนบ้านแม่พริก ต.วังใต้ อ.วังเหนือ จ.ลำปาง"
 
 CONFIRMATION_DEADLINE = "2 กันยายน เวลา 23.59 น."
 CONFIRMATION_FORM_URL = "https://forms.gle/ZDtmdwPKyqQgb3Tm8"
@@ -78,20 +78,19 @@ FIRST_MEET_TIME = "เริ่มลงทะเบียน 16.45 กิจก
 FIRST_MEET_LOCATION = "CU Plearn Space"
 FIRST_MEET_MAP_URL = "https://maps.app.goo.gl/Ygx5Ykq958tVnYyL6?g_st=ic"
 
-INTERVIEW_DATE_1 = "วันพุธที่ 26 สิงหาคม 2569"
-INTERVIEW_DATE_2 = "วันพฤหัสบดีที่ 27 สิงหาคม 2569"
-INTERVIEW_DATES = "26-27 สิงหาคม 2569"
-INTERVIEW_LOCATION = (
-    "ห้อง 611 ชั้น 6 อาคารจามจุรี 9 จุฬาลงกรณ์มหาวิทยาลัย "
-    "254 ถ. พญาไท แขวงวังใหม่ เขตปทุมวัน กรุงเทพมหานคร 10330"
-)
-INTERVIEW_REGISTRATION_LOCATION = "อาคารจามจุรี 9 ชั้น 6"
-INTERVIEW_MAP_URL = "https://maps.app.goo.gl/zWAbxya3iNijqH29A"
+INTERVIEW_DATE_1 = "วันพุธที่ 4 พฤศจิกายน 2569"
+INTERVIEW_DATE_2 = "วันพฤหัสบดีที่ 5 พฤศจิกายน 2569"
+INTERVIEW_DATES = "4-5 พฤศจิกายน 2569"
+INTERVIEW_LOCATION = "สำนักงานวิทยทรัพยากร จุฬาลงกรณ์มหาวิทยาลัย ชั้น 2"
+INTERVIEW_REGISTRATION_LOCATION = "สำนักงานวิทยทรัพยากร จุฬาลงกรณ์มหาวิทยาลัย ชั้น 2"
+INTERVIEW_MAP_URL = "https://maps.app.goo.gl/fymBWbNStnkpnqJz7?g_st=ic"
 
 INTERVIEW_RESULT_SUBJECT = f"ประกาศผลการคัดเลือกรอบสัมภาษณ์ {CAMP_NAME_DISPLAY}"
 FORM_RESULT_SUBJECT = f"ประกาศผลการคัดเลือกรอบฟอร์ม {CAMP_NAME_DISPLAY}"
 
-FORM_PASS_SHEET = SheetRange("ส่งเมลผ่านฟอร์ม", start_row=2, num_rows=3)
-FORM_FAIL_SHEET = SheetRange("ส่งเมลไม่ผ่านฟอร์ม", start_row=2, num_rows=3)
-INTERVIEW_PASS_SHEET = SheetRange("ส่งเมลผ่านสัม", start_row=2, num_rows=3)
-INTERVIEW_FAIL_SHEET = SheetRange("ส่งเมลไม่ผ่านสัม", start_row=2, num_rows=3)
+# FORM_PASS_SHEET = SheetRange("test", start_row=3, num_rows=1)
+FORM_PASS_SHEET = SheetRange("ส่งเมลผ่านฟอร์ม", start_row=5, num_rows=72)
+# FORM_FAIL_SHEET = SheetRange("test", start_row=3, num_rows=1)
+FORM_FAIL_SHEET = SheetRange("ส่งเมลไม่ผ่านฟอร์ม", start_row=5, num_rows=102)
+INTERVIEW_PASS_SHEET = SheetRange("ส่งเมลผ่านสัม", start_row=5, num_rows=23)
+INTERVIEW_FAIL_SHEET = SheetRange("ส่งเมลไม่ผ่านสัม", start_row=5, num_rows=57)

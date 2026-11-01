@@ -54,7 +54,9 @@ def get_message(name, row):
         f"<br>⏰ เวลา: {interview_time} น."
         f"<br>📍 สถานที่: {INTERVIEW_LOCATION} ( {INTERVIEW_MAP_URL})"
         "<br><br>ขอความกรุณาให้ผู้สมัครมาก่อนเวลาสัมภาษณ์ 15 นาที"
-        f"เพื่อลงทะเบียนที่ {INTERVIEW_REGISTRATION_LOCATION}"
+        f"เพื่อลงทะเบียนที่ {INTERVIEW_REGISTRATION_LOCATION} "
+        "หากผู้สมัครติดขัดหรือมีข้อสงสัยเพิ่มเติม "
+        "สามารถติดต่อด่วนได้ที่เบอร์ 0922516800 - แพร Human Resource"
         "<br><br>ไว้เจอกันนะ! ✨"
         "<br>ชมรมโลหิต จุฬาลงกรณ์มหาวิทยาลัย 🩸"
     )
