@@ -20,6 +20,7 @@ python -m poetry run python -m interview.pass_interview
 python -m poetry run python -m interview.fail_interview
 python -m poetry run python -m form.pass_form
 python -m poetry run python -m form.fail_form
+python -m poetry run python change_location.py
 ```
 
 `send_email.py` runs the interview-round rejection job, the same as
